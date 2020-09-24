@@ -45,9 +45,9 @@ var app = new Vue({
                         // this.verificarMaiorPartida(item);
 
                         if (item.markets.win1 && item.markets.win2 && item.markets.winX) {
-                            this.matchesGGbet.push([new Date(item.date_start).toLocaleString(), item.href, item.league, item.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), item.markets.win1.v, item.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), item.markets.win2.v, item.markets.winX.v]);
+                            this.matchesGGbet.push([new Date(item.date_start).toLocaleString(), item.href, item.league.toLocaleLowerCase(), item.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), item.markets.win1.v, item.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), item.markets.win2.v, item.markets.winX.v]);
                         } else {
-                            this.matchesGGbet.push([new Date(item.date_start).toLocaleString(), item.href, item.league, item.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, item.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, 0]);
+                            this.matchesGGbet.push([new Date(item.date_start).toLocaleString(), item.href, item.league.toLocaleLowerCase(), item.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, item.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, 0]);
                         }
 
                     });
@@ -81,9 +81,9 @@ var app = new Vue({
                         // });
 
                         if (i.markets.win1 && i.markets.win2 && i.markets.winX) {
-                            this.matches1xbet.push([new Date(i.date_start).toLocaleString(), i.href, i.league.name, i.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), i.markets.win1.v, i.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), i.markets.win2.v, i.markets.winX.v]);
+                            this.matches1xbet.push([new Date(i.date_start).toLocaleString(), i.href, i.league.name.toLocaleLowerCase(), i.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), i.markets.win1.v, i.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), i.markets.win2.v, i.markets.winX.v]);
                         } else {
-                            this.matches1xbet.push([new Date(i.date_start).toLocaleString(), i.href, i.league.name, i.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, i.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, 0]);
+                            this.matches1xbet.push([new Date(i.date_start).toLocaleString(), i.href, i.league.name.toLocaleLowerCase(), i.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, i.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, 0]);
                         }
 
                     });
@@ -97,9 +97,9 @@ var app = new Vue({
                     this.matchesPari = [];
                     response.body.forEach(ix => {
                         if (ix.win1 && ix.win2 && ix.winX) {
-                            this.matchesPari.push([new Date(ix.actual_at).toLocaleString(), ix.href, ix.title, ix.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), ix.win1.value, ix.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), ix.win2.value, ix.winX.value]);
+                            this.matchesPari.push([new Date(ix.actual_at).toLocaleString(), ix.href, ix.title.toLocaleLowerCase(), ix.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), ix.win1.value, ix.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), ix.win2.value, ix.winX.value]);
                         } else {
-                            this.matchesPari.push([new Date(ix.actual_at).toLocaleString(), ix.href, ix.title, ix.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, ix.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, 0]);
+                            this.matchesPari.push([new Date(ix.actual_at).toLocaleString(), ix.href, ix.title.toLocaleLowerCase(), ix.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, ix.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, 0]);
                         }
                     });
 
@@ -113,9 +113,9 @@ var app = new Vue({
                     this.matchesLeon = [];
                     response.body.forEach(ixt => {
                         if (ixt.win1 && ixt.win2 && ixt.winX) {
-                            this.matchesLeon.push([new Date(ixt.date_start).toLocaleString(), ixt.href, ixt.country, ixt.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), ixt.win1.value, ixt.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), ixt.win2.value, ixt.winX.value]);
+                            this.matchesLeon.push([new Date(ixt.date_start).toLocaleString(), ixt.href, ixt.country.toLocaleLowerCase(), ixt.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), ixt.win1.value, ixt.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), ixt.win2.value, ixt.winX.value]);
                         } else {
-                            this.matchesLeon.push([new Date(ixt.date_start).toLocaleString(), ixt.href, ixt.country, ixt.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, ixt.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' '), 0, 0]);
+                            this.matchesLeon.push([new Date(ixt.date_start).toLocaleString(), ixt.href, ixt.country.toLocaleLowerCase(), ixt.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, ixt.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, ' ').toLocaleLowerCase(), 0, 0]);
                         }
                     });
                 })
