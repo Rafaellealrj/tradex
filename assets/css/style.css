@@ -1,0 +1,203 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+}
+.list-matches{
+    border: 1px solid #DCDCDC;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#sidebar {
+    background-color:#06283B;
+    line-height: 35px;
+    margin-bottom: 30px;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.retornoTeam1, .retornoTeam2 {
+color: #000;
+padding: 3px;
+font-size: 12px;
+}
+#sidebar img {
+    padding-left: 2px;
+}
+
+#collunm-odds {
+    background-color:#06283B;
+}
+
+.filter-countries {
+    line-height: 36px;
+}
+
+.flex {
+    display: -webkit-box;
+    display: flex;
+}
+
+.justify-between {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+
+.justify-center {
+    -webkit-box-pack: justify;
+    justify-content: center;
+}
+
+.items-center {
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.homepage-betline {
+    display: block;
+    margin-bottom: 2rem;
+}
+
+.mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.mx-4 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: .5rem;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.mr-2 {
+    margin-right: .5rem;
+}
+
+.whitespace-no-wrap {
+    white-space: nowrap;
+}
+
+.text-csgo-tint {
+    color: #a0b757;
+}
+
+.bg-green {
+    background-color: #a0b757;
+}
+
+.tournament {
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+.text-orange {
+    color:	#FF8C00;
+}
+
+.bg-orange {
+    background-color:	#FF8C00;
+}
+
+.bg-white-transparent-4 {
+    background-color: rgba(122, 122, 122, 0.28);
+}
+
+.competitor-container {
+    position: relative;
+    background-color: #15587b;
+    -webkit-box-flex: 1;
+    flex: 1 1 0%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 52px;
+    padding: 6px;
+}
+.competitor-container.competitor-one {
+    margin-right: .75rem;
+}
+
+.rounded {
+    border-radius: 6px;
+}
+
+.rounded-down {
+    border-radius: 0px 0px 6px 6px;
+}
+
+.rounded-up {
+    border-radius: 6px 6px 0px 0px;  
+}
+
+.lh-20 {
+    line-height: 15px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.text-teal {
+    color: teal;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.competitor-container.competitor-two {
+    margin-left: .75rem;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-base {
+    font-size: 1rem;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.competitor-container:after, .competitor-container:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 4px;
+    display: none;
+    content: "";
+    top: 0;
+    border-style: solid;
+}
+
+.text-xs {
+    font-size: .75rem;
+}
+
+.competitor-container .line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
