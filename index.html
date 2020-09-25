@@ -25,8 +25,9 @@
         <div class="row">
             <div class="col-sm-12" id="sidebar">
                 <img src="assets/images/logo.png" alt="" width="25px">
-                <span style="padding-left:40px;"> Stake $: </span><input type="number" placeholder="Entrada"
-                    style="line-height: 20px; width: 100px;" v-model="stake1">
+                <span style="padding-left:40px;"> Stake $: </span>
+                <input type="number" placeholder="Entrada" style="line-height: 20px; width: 100px;" 
+                v-model="stake1">
 
                 <select v-model="selectCountry">
                     <option disabled value="">Please select one</option>
@@ -220,7 +221,7 @@
         <!-- FIM -----   AREA COM LOGO CORRETORAS  ----------- FIM -->
 
         <!-- INICIO --- AREA COM A LISTAGEM DE PARTIDAS E ODDS --- FIM -->
-        <div class="row" id="matchesOdds">
+        <div class="row" id="matchesOdds" v-if="matchesGGbet">
             <!-- Corretora 1 -->
             <div class="col-sm-3">
                 <div class="list-matches" id="collunm-odds">
@@ -335,7 +336,7 @@
             </div>
 
             <!-- Corretora 2 -->
-            <div class="col-sm-3">
+            <div class="col-sm-3" v-if="matches1xbet">
                 <div class="list-matches" id="collunm-odds">
                     <div v-for="match in matches1xbet">
                         <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
@@ -446,7 +447,7 @@
             </div>
 
             <!-- Corretora 3 -->
-            <div class="col-sm-3">
+            <div class="col-sm-3" v-if="matchesPari">
                 <div class="list-matches" id="collunm-odds">
                     <div v-for="match in matchesPari">
                         <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
@@ -557,7 +558,7 @@
             </div>
 
             <!-- Corretora 4 -->
-            <div class="col-sm-3">
+            <div class="col-sm-3" v-if="matchesLeon">
                 <div class="list-matches" id="collunm-odds">
                     <div v-for="match in matchesLeon">
                         <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
