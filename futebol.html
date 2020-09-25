@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradex - Trivial Solutions</title>
+    <!-- IMPORTANDO: CSS LOCAL -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- IMPORTANDO: CSS BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- IMPORTANDO: CSS FONTAWESOME (NÃO USEI) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <!-- IMPORTANDO: FONT RALEWAY -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+    <!-- IMPORTANDO: FAVICON -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+</head>
+
+<body>
+    <div id="app" class="container-fluid">
+
+        <!-- HEAD -- TOPO (FILTRO DE PAíS) - (ENTRADA DA OPERAÇÃO "STAKE") -->
+        <div class="row">
+            <div class="col-sm-12" id="sidebar">
+                <img src="assets/images/logo.png" alt="" width="25px">
+                <span style="padding-left:40px;"> Stake $: </span>
+                <input type="number" placeholder="Entrada" style="line-height: 20px; width: 100px;" v-model="stake1">
+
+                <select v-model="selectCountry">
+                    <option disabled value="">Please select one</option>
+                    <option>all</option>
+                    <option>armenia</option>
+                    <option>austria</option>
+                    <option>bosnia</option>
+                    <option>brazil</option>
+                    <option>chile</option>
+                    <option>croatia</option>
+                    <option>czech</option>
+                    <option>egypt</option>
+                    <option>england</option>
+                    <option>estonia</option>
+                    <option>finland</option>
+                    <option>iceland</option>
+                    <option>iran</option>
+                    <option>israel</option>
+                    <option>jordan</option>
+                    <option>mauritania</option>
+                    <option>mexico</option>
+                    <option>moldova</option>
+                    <option>morocco</option>
+                    <option>netherlands</option>
+                    <option>peru</option>
+                    <option>poland</option>
+                    <option>portugal</option>
+                    <option>romania</option>
+                    <option>slovakia</option>
+                    <option>solomon</option>
+                    <option>uruguay</option>
+                    <option>uzbekistan</option>
+                </select>
+
+                <button class="btn btn-primary btn-sm" @click.prevent="carregarDados">recarregar</button>
+
+                <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
+                    style=" filter: blur(5px); margin-left:240px" v-if="selectCountry != 'all'">
+                <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
+                    style=" margin-left:240px;" v-if="selectCountry == 'all'">
+                <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
+                    style="filter: blur(5px)" v-if="selectCountry != 'armenia'">
+                <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
+                    v-if="selectCountry == 'armenia'">
+                <img src="assets/images/countries/austria.png" title="austria" alt="austria" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'austria'">
+                <img src="assets/images/countries/austria.png" title="austria" alt="austria" width="30px"
+                    v-if="selectCountry == 'austria'">
+                <img src="assets/images/countries/bosnia.png" title="bosnia" alt="bosnia" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'bosnia'">
+                <img src="assets/images/countries/bosnia.png" title="bosnia" alt="bosnia" width="30px"
+                    v-if="selectCountry == 'bosnia'">
+                <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'brazil'">
+                <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="30px"
+                    v-if="selectCountry == 'brazil'">
+                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'chile'">
+                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
+                    v-if="selectCountry == 'chile'">
+                <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'croatia'">
+                <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
+                    v-if="selectCountry == 'croatia'">
+                <img src="assets/images/countries/czech.png" title="czech" alt="czech" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'czech'">
+                <img src="assets/images/countries/czech.png" title="czech" alt="czech" width="30px"
+                    v-if="selectCountry == 'czech'">
+                <img src="assets/images/countries/egypt.png" title="egypt" alt="egypt" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'egypt'">
+                <img src="assets/images/countries/egypt.png" title="egypt" alt="egypt" width="30px"
+                    v-if="selectCountry == 'egypt'">
+                <img src="assets/images/countries/england.png" title="england" alt="england" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'england'">
+                <img src="assets/images/countries/england.png" title="england" alt="england" width="30px"
+                    v-if="selectCountry == 'england'">
+                <img src="assets/images/countries/estonia.png" title="estonia" alt="estonia" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'estonia'">
+                <img src="assets/images/countries/estonia.png" title="estonia" alt="estonia" width="30px"
+                    v-if="selectCountry == 'estonia'">
+                <img src="assets/images/countries/finland.png" title="finland" alt="finland" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'finland'">
+                <img src="assets/images/countries/finland.png" title="finland" alt="finland" width="30px"
+                    v-if="selectCountry == 'finland'">
+                <img src="assets/images/countries/iceland.png" title="iceland" alt="iceland" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'iceland'">
+                <img src="assets/images/countries/iceland.png" title="iceland" alt="iceland" width="30px"
+                    v-if="selectCountry == 'iceland'">
+                <img src="assets/images/countries/iran.png" title="iran" alt="iran" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'iran'">
+                <img src="assets/images/countries/iran.png" title="iran" alt="iran" width="30px"
+                    v-if="selectCountry == 'iran'">
+                <img src="assets/images/countries/israel.png" title="israel" alt="israel" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'israel'">
+                <img src="assets/images/countries/israel.png" title="israel" alt="israel" width="30px"
+                    v-if="selectCountry == 'israel'">
+                <img src="assets/images/countries/jordan.png" title="jordan" alt="jordan" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'jordan'">
+                <img src="assets/images/countries/jordan.png" title="jordan" alt="jordan" width="30px"
+                    v-if="selectCountry == 'jordan'">
+                <img src="assets/images/countries/mauritania.png" title="mauritania" alt="mauritania" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'mauritania'">
+                <img src="assets/images/countries/mauritania.png" title="mauritania" alt="mauritania" width="30px"
+                    v-if="selectCountry == 'mauritania'">
+                <img src="assets/images/countries/mexico.png" title="mexico" alt="mexico" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'mexico'">
+                <img src="assets/images/countries/mexico.png" title="mexico" alt="mexico" width="30px"
+                    v-if="selectCountry == 'mexico'">
+                <img src="assets/images/countries/moldova.png" title="moldova" alt="moldova" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'moldova'">
+                <img src="assets/images/countries/moldova.png" title="moldova" alt="moldova" width="30px"
+                    v-if="selectCountry == 'moldova'">
+                <img src="assets/images/countries/morocco.png" title="morocco" alt="morocco" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'morocco'">
+                <img src="assets/images/countries/morocco.png" title="morocco" alt="morocco" width="30px"
+                    v-if="selectCountry == 'morocco'">
+                <img src="assets/images/countries/netherlands.png" title="netherlands" alt="netherlands" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'netherlands'">
+                <img src="assets/images/countries/netherlands.png" title="netherlands" alt="netherlands" width="30px"
+                    v-if="selectCountry == 'netherlands'">
+                <img src="assets/images/countries/peru.png" title="peru" alt="peru" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'peru'">
+                <img src="assets/images/countries/peru.png" title="peru" alt="peru" width="30px"
+                    v-if="selectCountry == 'peru'">
+                <img src="assets/images/countries/poland.png" title="poland" alt="poland" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'poland'">
+                <img src="assets/images/countries/poland.png" title="poland" alt="poland" width="30px"
+                    v-if="selectCountry == 'poland'">
+                <img src="assets/images/countries/portugal.png" title="portugal" alt="portugal" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'portugal'">
+                <img src="assets/images/countries/portugal.png" title="portugal" alt="portugal" width="30px"
+                    v-if="selectCountry == 'portugal'">
+                <img src="assets/images/countries/romania.png" title="romania" alt="romania" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'romania'">
+                <img src="assets/images/countries/romania.png" title="romania" alt="romania" width="30px"
+                    v-if="selectCountry == 'romania'">
+                <img src="assets/images/countries/slovakia.png" title="slovakia" alt="slovakia" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'slovakia'">
+                <img src="assets/images/countries/slovakia.png" title="slovakia" alt="slovakia" width="30px"
+                    v-if="selectCountry == 'slovakia'">
+                <img src="assets/images/countries/solomon.png" title="solomon" alt="solomon" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'solomon'">
+                <img src="assets/images/countries/solomon.png" title="solomon" alt="solomon" width="30px"
+                    v-if="selectCountry == 'solomon'">
+                <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'uruguay'">
+                <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="30px"
+                    v-if="selectCountry == 'uruguay'">
+                <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'uzbekistan'">
+                <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
+                    v-if="selectCountry == 'uzbekistan'">
+
+            </div>
+
+            <!-- FIM  ------     HEAD -- TOPO (FILTRO DE PAíS) - (ENTRADA DA OPERAÇÃO "STAKE")  ---------  FIM -->
+
+
+            <!-- INICIO  -----   AREA COM LOGO CORRETORAS  ----------- FIM -->
+
+            <!-- Corretora 1 -->
+            <div class="col-sm-3" id="corretoras">
+                <div class="bet-logo">
+                    <img src="assets/images/ggbet.jpg" alt="" width="200px" style="margin-left: 23%;">
+                </div>
+                <br>
+            </div>
+
+            <!-- Corretora 2 -->
+            <div class="col-sm-3" id="corretoras">
+                <div class="bet-logo">
+                    <img src="assets/images/1xbet.png" alt="" width="160px" style="margin-left: 27%; margin-top:16px;">
+                </div>
+                <br>
+            </div>
+
+            <!-- Corretora 3 -->
+            <div class="col-sm-3" id="corretoras">
+                <div class="bet-logo">
+                    <img src="assets/images/pari.jpg" alt="" width="170px" style="margin-left: 27%;margin-top: -15px;">
+                </div>
+                <br>
+            </div>
+
+            <!-- Corretora 4 -->
+            <div class="col-sm-3" id="corretoras">
+                <div class="bet-logo">
+                    <img src="assets/images/leon.png" alt="" width="140px" style="margin-left: 31%;margin-top: -22px;">
+                </div>
+                <br>
+            </div>
+        </div>
+        <!-- FIM -----   AREA COM LOGO CORRETORAS  ----------- FIM -->
+
+        <!-- INICIO --- AREA COM A LISTAGEM DE PARTIDAS E ODDS --- FIM -->
+        <div class="row" id="matchesOdds" v-if="matchesGGbet">
+            <!-- Corretora 1 -->
+            <div class="col-sm-3">
+                <div class="list-matches" id="collunm-odds">
+                    <div v-for="match in matchesGGbet">
+                        <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga.substring(match.liga.indexOf('.'), 0)}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">{{ (match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="homepage-betline mx-4"
+                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga.substring(match.liga.indexOf('.'), 0)}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">{{ (match.odd_equipe_1)}}</div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corretora 2 -->
+            <div class="col-sm-3" v-if="matches1xbet">
+                <div class="list-matches" id="collunm-odds">
+                    <div v-for="match in matches1xbet">
+                        <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga.substring(match.liga.indexOf(' '), 0)}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">
+                                        {{ (match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="homepage-betline mx-4"
+                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga.substring(match.liga.indexOf(' '), 0)}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">
+                                        {{ (match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corretora 3 -->
+            <div class="col-sm-3" v-if="matchesPari">
+                <div class="list-matches" id="collunm-odds">
+                    <div v-for="match in matchesPari">
+                        <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga.substring(match.liga.indexOf(' '), 0)}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">
+                                        {{ (match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="homepage-betline mx-4"
+                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga.substring(match.liga.indexOf(' '), 0)}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">
+                                        {{ (match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corretora 4 -->
+            <div class="col-sm-3" v-if="matchesLeon">
+                <div class="list-matches" id="collunm-odds">
+                    <div v-for="match in matchesLeon">
+                        <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{ match.liga}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">{{(match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="" class="homepage-betline mx-4"
+                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            <div class="flex justify-between items-center mx-0 mb-2">
+                                <div class="flex">
+                                    <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
+                                    <span class="tournament">{{match.liga}}</span>
+                                </div>
+                                <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
+                                    <strong>{{match.data}}</strong>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    </span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-up">
+                                    Search odd: <span
+                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-white-transparent-4">
+                                <div class="competitor-container competitor-one rounded">
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
+                                    </div>
+                                    <div class="text-base text-white font-bold ml-2">{{(match.odd_equipe_1)}}
+                                    </div>
+                                </div>
+                                <div class="uppercase italic text-teal font-bold text-center"
+                                    style="font-size: 13px; min-width: 36px;">{{match.odd_empate}}
+                                </div>
+                                <div class="competitor-container competitor-two rounded">
+                                    <div class="text-base text-white font-bold mr-2">{{match.odd_equipe_2}}
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                                <div class="retornoTeam1">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                </div>
+                                <div class="retornoTeam2">
+                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM ---  AREA COM A LISTAGEM DE PARTIDAS E ODDS ---  FIM -->
+
+    </div>
+
+
+</body>
+
+<!-- IMPORTANDO: JQUERY -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<!-- IMPORTANDO: POPPER -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<!-- IMPORTANDO: BOOTSTRAP -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<!-- IMPORTANDO: FONT-AWESOME  (NÃO USEI) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
+<!-- IMPORTANDO: VUEJS -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<!-- IMPORTANDO: VUE-RESOURCE -->
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<!-- ABERTURA DO SCRIPT DE MANIPULAÇÃO DO VUEJS -->
+<script src="assets/js/vue.js"></script>
+<!-- FECHAMENTO DO SCRIPT DE MANIPULAÇÃO DO VUEJS -->
+
+</html>
