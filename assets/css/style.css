@@ -104,7 +104,7 @@ font-size: 12px;
     white-space: nowrap;
     font-size: 10px;
     text-overflow: ellipsis;
-    max-width: 120px;
+    max-width: 260px;
 }
 .text-orange {
     color:	#FF8C00;
