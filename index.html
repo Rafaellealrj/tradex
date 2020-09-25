@@ -37,6 +37,7 @@
                     <option>bosnia</option>
                     <option>brazil</option>
                     <option>chile</option>
+                    <option>colombia</option>
                     <option>croatia</option>
                     <option>czech</option>
                     <option>egypt</option>
@@ -59,13 +60,14 @@
                     <option>slovakia</option>
                     <option>solomon</option>
                     <option>uruguay</option>
+                    <option>usa</option>
                     <option>uzbekistan</option>
                 </select>
 
                 <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
-                    style=" filter: blur(5px); margin-left:340px" v-if="selectCountry != 'all'">
+                    style=" filter: blur(5px); margin-left:280px" v-if="selectCountry != 'all'">
                 <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
-                    style=" margin-left:340px;" v-if="selectCountry == 'all'">
+                    style=" margin-left:280px;" v-if="selectCountry == 'all'">
                 <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
                     style="filter: blur(5px)" v-if="selectCountry != 'armenia'">
                 <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
@@ -82,10 +84,14 @@
                     style=" filter: blur(5px)" v-if="selectCountry != 'brazil'">
                 <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="30px"
                     v-if="selectCountry == 'brazil'">
-                    <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
+                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'chile'">
                 <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
                     v-if="selectCountry == 'chile'">
+                <img src="assets/images/countries/colombia.png" title="colombia" alt="colombia" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'colombia'">
+                <img src="assets/images/countries/colombia.png" title="colombia" alt="colombia" width="30px"
+                    v-if="selectCountry == 'colombia'">
                 <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'croatia'">
                 <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
@@ -174,6 +180,10 @@
                     style=" filter: blur(5px)" v-if="selectCountry != 'uruguay'">
                 <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="30px"
                     v-if="selectCountry == 'uruguay'">
+                <img src="assets/images/countries/usa.png" title="usa" alt="usa" width="30px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'usa'">
+                <img src="assets/images/countries/usa.png" title="usa" alt="usa" width="30px"
+                    v-if="selectCountry == 'usa'">
                 <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'uzbekistan'">
                 <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
