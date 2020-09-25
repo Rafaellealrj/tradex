@@ -1,13 +1,12 @@
 var app = new Vue({
   el: "#app",
   data: {
-    idPartida: [],
     maiorOddPartidas: [],
     matchesGGbet: [],
     matches1xbet: [],
     matchesPari: [],
     matchesLeon: [],
-    stake1: "10.00",
+    stake1: 10.00,
     selectCountry: "all",
     endpoints: [
       {
@@ -16,34 +15,36 @@ var app = new Vue({
         authorization:
           "657e0c7308ac4accbedf9887314c4506fb7ff9d7d5d84dcb9d03f9d838086bef",
       },
-      {
-        name: "1xbet",
-        url: "https://api.betting-api.com/1xbet/football/live/all",
-        authorization:
-          "40bd95985ebd433ab18dd64d3880ba4bbc44c33c839f45d6b4b8039bde555dc6",
-      },
-      {
-        name: "parimatch",
-        url: "https://api.betting-api.com/parimatch/football/live/all",
-        authorization:
-          "a1f2f4afa9024130b70662dfbde48ec6f9e7ddae8042494e970b7fd9753a01d4",
-      },
-      {
-        name: "leonbets",
-        url: "https://api.betting-api.com/leonbets/football/live/all",
-        authorization:
-          "965d0e44ee5d461abde583481ba9c165f807761c2feb47828549be6513a01e74",
-      },
+      // {
+      //   name: "1xbet",
+      //   url: "https://api.betting-api.com/1xbet/football/live/all",
+      //   authorization:
+      //     "40bd95985ebd433ab18dd64d3880ba4bbc44c33c839f45d6b4b8039bde555dc6",
+      // },
+      // {
+      //   name: "parimatch",
+      //   url: "https://api.betting-api.com/parimatch/football/live/all",
+      //   authorization:
+      //     "a1f2f4afa9024130b70662dfbde48ec6f9e7ddae8042494e970b7fd9753a01d4",
+      // },
+      // {
+      //   name: "leonbets",
+      //   url: "https://api.betting-api.com/leonbets/football/live/all",
+      //   authorization:
+      //     "965d0e44ee5d461abde583481ba9c165f807761c2feb47828549be6513a01e74",
+      // },
     ],
   },
 
   created() {
-    this.endpoints.forEach((endpoint) => {
-      this.consultarApi(endpoint);
-    });
+    this.carregarDados();
   },
 
   methods: {
+    carregarDados() {
+      this.endpoints.forEach(endpoint => this.consultarApi(endpoint));
+    },
+
     /**
      * faz cada requisição e devolve o response para a função 'verificarCasaDeAposta'
      */
@@ -52,10 +53,9 @@ var app = new Vue({
         headers: { authorization: endpoint.authorization },
       };
 
-      this.$http
-        .get(endpoint.url, config)
-        .then((response) => this.verificarCasaDeAposta(response, endpoint.name))
-        .catch((error) => console.log(error));
+      this.$http.get(endpoint.url, config)
+                .then(response => this.verificarCasaDeAposta(response, endpoint.name))
+                .catch(error => console.log(error));
     },
 
     verificarCasaDeAposta(response, name) {
@@ -80,37 +80,18 @@ var app = new Vue({
      */
     getGGbet(response) {
       response.body.forEach((item) => {
-        if (item.markets.win1 && item.markets.win2 && item.markets.winX) {
-          this.matchesGGbet.push([
-            new Date(item.date_start).toLocaleString(),
-            item.href,
-            item.league.toLocaleLowerCase(),
-            item.team1
-              .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ")
-              .toLocaleLowerCase(),
-            item.markets.win1.v,
-            item.team2
-              .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ")
-              .toLocaleLowerCase(),
-            item.markets.win2.v,
-            item.markets.winX.v,
-          ]);
-        } else {
-          this.matchesGGbet.push([
-            new Date(item.date_start).toLocaleString(),
-            item.href,
-            item.league.toLocaleLowerCase(),
-            item.team1
-              .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ")
-              .toLocaleLowerCase(),
-            0,
-            item.team2
-              .replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ")
-              .toLocaleLowerCase(),
-            0,
-            0,
-          ]);
-        }
+        let obj = {};
+
+        obj.data            = new Date(item.date_start).toLocaleString();
+        obj.url             = item.href;
+        obj.liga            = item.league.toLocaleLowerCase();
+        obj.equipe_1        = item.team1.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ").toLocaleLowerCase();
+        obj.odd_equipe_1    = (item.markets.win1) ? item.markets.win1.v : '0.00';
+        obj.equipe_2        = item.team2.replace(/([\u0300-\u036f]|[^0-9a-zA-Z])/g, " ").toLocaleLowerCase();
+        obj.odd_equipe_2    = (item.markets.win2) ? item.markets.win2.v : '0.00';
+        obj.odd_empate      = (item.markets.winX) ? item.markets.winX.v : '0.00';
+
+        this.matchesGGbet.push(obj);
       });
 
       console.log("terminou a primeira");
@@ -253,6 +234,16 @@ var app = new Vue({
         }
 
         this.maiorOddPartidas.push(objeto);
+      });
+    },
+
+    oddmaior() {
+      this.matchesGGbet.forEach((ggbet) => {
+        this.matches1xbet.forEach((xbet) => {
+          this.matchesPari.forEach((pari) => {
+            this.matchesLeon.forEach((leon) => {});
+          });
+        });
       });
     },
   },

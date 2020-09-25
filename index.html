@@ -37,7 +37,6 @@
                     <option>bosnia</option>
                     <option>brazil</option>
                     <option>chile</option>
-                    <option>colombia</option>
                     <option>croatia</option>
                     <option>czech</option>
                     <option>egypt</option>
@@ -60,14 +59,15 @@
                     <option>slovakia</option>
                     <option>solomon</option>
                     <option>uruguay</option>
-                    <option>usa</option>
                     <option>uzbekistan</option>
                 </select>
 
+                <button class="btn btn-primary btn-sm" @click.prevent="carregarDados">recarregar</button>
+
                 <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
-                    style=" filter: blur(5px); margin-left:280px" v-if="selectCountry != 'all'">
+                    style=" filter: blur(5px); margin-left:340px" v-if="selectCountry != 'all'">
                 <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
-                    style=" margin-left:280px;" v-if="selectCountry == 'all'">
+                    style=" margin-left:340px;" v-if="selectCountry == 'all'">
                 <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
                     style="filter: blur(5px)" v-if="selectCountry != 'armenia'">
                 <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
@@ -84,14 +84,10 @@
                     style=" filter: blur(5px)" v-if="selectCountry != 'brazil'">
                 <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="30px"
                     v-if="selectCountry == 'brazil'">
-                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
+                    <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'chile'">
                 <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
                     v-if="selectCountry == 'chile'">
-                <img src="assets/images/countries/colombia.png" title="colombia" alt="colombia" width="30px"
-                    style=" filter: blur(5px)" v-if="selectCountry != 'colombia'">
-                <img src="assets/images/countries/colombia.png" title="colombia" alt="colombia" width="30px"
-                    v-if="selectCountry == 'colombia'">
                 <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'croatia'">
                 <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
@@ -180,10 +176,6 @@
                     style=" filter: blur(5px)" v-if="selectCountry != 'uruguay'">
                 <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="30px"
                     v-if="selectCountry == 'uruguay'">
-                <img src="assets/images/countries/usa.png" title="usa" alt="usa" width="30px"
-                    style=" filter: blur(5px)" v-if="selectCountry != 'usa'">
-                <img src="assets/images/countries/usa.png" title="usa" alt="usa" width="30px"
-                    v-if="selectCountry == 'usa'">
                 <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'uzbekistan'">
                 <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
@@ -239,65 +231,63 @@
                         <a href="" class="homepage-betline mx-4" v-if="selectCountry == 'all'">
                             <div class="flex justify-between items-center mx-0 mb-2">
                                 <div class="flex">
-                                    <span class="font-bold uppercase mr-2 whitespace-no-wrap text-csgo-tint"
-                                        style="font-size:10px;">football</span>
-                                    <span class="tournament"
-                                        style="max-width: 260px;">{{match[2].substring(match[2].indexOf('.'), 0)}}</span>
+                                        <span class="tournament"
+                                        style="max-width: 260px;">{{match.liga.substring(match.liga.indexOf('.'), 0)}}</span>
                                 </div>
                                 <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
-                                    <strong>{{match[0]}}</strong>
+                                    <strong>{{match.data}}</strong>
                                 </div>
                             </div>
                             <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
                                 <div class="retornoTeam1 bg-orange rounded-up">
                                     Search odd: <span
-                                        class="font-bold">{{(stake1*match[4] / (stake1*match[4] - stake1)).toFixed(2)}}
+                                        class="font-bold">{{(stake1*match.odd_equipe_1 / (stake1*match.odd_equipe_1 - stake1)).toFixed(2)}}
                                         - </span>
                                 </div>
                                 <div class="retornoTeam2 bg-orange rounded-up">
                                     Search odd: <span
-                                        class="font-bold">{{(stake1*match[6] / (stake1*match[6] - stake1)).toFixed(2)}}</span>
+                                        class="font-bold">{{(stake1*match.odd_equipe_2 / (stake1*match.odd_equipe_2 - stake1)).toFixed(2)}}</span>
                                 </div>
 
                             </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
-                                        <span class="text-xs text-white line-clamp uppercase">{{match[3].substring(30, 0)}}</span>
+                                        <span class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
                                     </div>
-                                    <div class="text-base text-white font-bold ml-2">{{ match[4].toFixed(2)}}</div>
+                                    <div class="text-base text-white font-bold ml-2">{{ match.odd_equipe_1.toFixed(2)}}</div>
                                 </div>
                                 <div class="uppercase italic text-teal font-bold text-center"
-                                    style="font-size: 13px; min-width: 36px;">{{ match[7].toFixed(2)}}
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate.toFixed(2)}}
                                 </div>
                                 <div class="competitor-container competitor-two rounded">
-                                    <div class="text-base text-white font-bold mr-2">{{ match[6].toFixed(2)}}</div>
+                                    <div class="text-base text-white font-bold mr-2">{{ match.odd_equipe_2.toFixed(2)}}</div>
                                     <div class="flex items-center">
                                         <span
-                                            class="text-xs text-white text-right line-clamp uppercase">{{match[5].substring(30, 0)}}</span>
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{(stake1*match[4]).toFixed(2)}}</span>
+                                    Return: <span class="font-bold">{{(stake1*match.odd_equipe_1).toFixed(2)}}</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{(stake1*match[6]).toFixed(2)}}</span>
+                                    Return: <span class="font-bold">{{(stake1*match.odd_equipe_2).toFixed(2)}}</span>
                                 </div>
                             </div>
                         </a>
                         <a href="" class="homepage-betline mx-4"
-                            v-if="match[2].substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
                             <div class="flex justify-between items-center mx-0 mb-2">
                                 <div class="flex">
                                     <span class="font-bold uppercase mr-2 whitespace-no-wrap text-csgo-tint"
                                         style="font-size:10px;">football</span>
                                     <span class="tournament"
-                                        style="max-width: 260px;">{{match[2].substring(match[2].indexOf('.'), 0)}}</span>
+                                        style="max-width: 260px;">{{match.liga.substring(match.liga.indexOf('.'), 0)}}</span>
                                 </div>
                                 <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
-                                    <strong>{{match[0]}}</strong>
+                                    <strong>{{match.data}}</strong>
                                 </div>
                             </div>
                             <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
@@ -315,18 +305,18 @@
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
-                                        <span class="text-xs text-white line-clamp uppercase">{{match[3].substring(30, 0)}}</span>
+                                        <span class="text-xs text-white line-clamp uppercase">{{match.equipe_1.substring(30, 0)}}</span>
                                     </div>
                                     <div class="text-base text-white font-bold ml-2">{{ match[4].toFixed(2)}}</div>
                                 </div>
                                 <div class="uppercase italic text-teal font-bold text-center"
-                                    style="font-size: 13px; min-width: 36px;">{{ match[7].toFixed(2)}}
+                                    style="font-size: 13px; min-width: 36px;">{{ match.odd_empate.toFixed(2)}}
                                 </div>
                                 <div class="competitor-container competitor-two rounded">
                                     <div class="text-base text-white font-bold mr-2">{{ match[6].toFixed(2)}}</div>
                                     <div class="flex items-center">
                                         <span
-                                            class="text-xs text-white text-right line-clamp uppercase">{{match[5].substring(30, 0)}}</span>
+                                            class="text-xs text-white text-right line-clamp uppercase">{{match.equipe_2.substring(30, 0)}}</span>
 
                                     </div>
                                 </div>
