@@ -30,6 +30,7 @@ color: #000;
 padding: 3px;
 font-size: 12px;
 }
+
 #sidebar img {
     padding-left: 2px;
 }
@@ -123,6 +124,10 @@ font-size: 12px;
     background-color:	#FF8C00;
 }
 
+.bg-white {
+    background-color: #fff;
+}
+
 .bg-white-transparent-4 {
     background-color: rgba(122, 122, 122, 0.28);
 }
@@ -157,8 +162,24 @@ font-size: 12px;
     border-radius: 6px 6px 0px 0px;  
 }
 
-.lh-20 {
+.rounded-left {
+    border-radius: 6px 0px 0px 6px;  
+}
+
+.rounded-right {
+    border-radius: 0px 6px 6px 0px; 
+}
+
+.bd-orange {
+    border-bottom: 1px solid #FF8C00;
+}
+
+.lh-15 {
     line-height: 15px;
+}
+
+.lh-30 {
+    line-height: 30px;
 }
 
 .italic {

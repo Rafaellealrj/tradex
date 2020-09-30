@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-sm-12" id="sidebar">
                 <img src="assets/images/logo.png" alt="" width="25px">
-                <span style="padding-left:40px;"> Stake $: </span>
+                <span style="padding-left:20px;"> Stake $: </span>
                 <input type="number" placeholder="Entrada" style="line-height: 20px; width: 100px;" v-model="stake1">
 
                 <select v-model="selectCountry">
@@ -33,19 +33,31 @@
                     <option>all</option>
                     <option>armenia</option>
                     <option>austria</option>
+                    <option>belarus</option>
+                    <option>belgium</option>
                     <option>bosnia</option>
                     <option>brazil</option>
+                    <option>bulgaria</option>
                     <option>chile</option>
+                    <option>colombia</option>
                     <option>croatia</option>
                     <option>czech</option>
+                    <option>denmark</option>
                     <option>egypt</option>
                     <option>england</option>
                     <option>estonia</option>
+                    <option>faroe</option>
                     <option>finland</option>
+                    <option>france</option>
+                    <option>germany</option>
+                    <option>greece</option>
+                    <option>hungary</option>
                     <option>iceland</option>
                     <option>iran</option>
                     <option>israel</option>
+                    <option>italy</option>
                     <option>jordan</option>
+                    <option>luxembourg</option>
                     <option>mauritania</option>
                     <option>mexico</option>
                     <option>moldova</option>
@@ -55,129 +67,198 @@
                     <option>poland</option>
                     <option>portugal</option>
                     <option>romania</option>
+                    <option>russia</option>
                     <option>slovakia</option>
                     <option>solomon</option>
+                    <option>sudan</option>
+                    <option>sweden</option>
+                    <option>turkey</option>
                     <option>uruguay</option>
                     <option>uzbekistan</option>
                 </select>
 
-                <button class="btn btn-primary btn-sm" @click.prevent="carregarDados">recarregar</button>
+                <button class="btn btn-primary btn-sm" @click.prevent="carregarDados"><i
+                        class="fas fa-sync-alt"></i></button>
 
-                <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
-                    style=" filter: blur(5px); margin-left:240px" v-if="selectCountry != 'all'">
-                <img src="assets/images/countries/world.png" title="world" alt="world" width="30px"
-                    style=" margin-left:240px;" v-if="selectCountry == 'all'">
-                <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
+                <img src="assets/images/countries/world.png" title="world" alt="world" width="25px"
+                    style=" filter: blur(5px); margin-left:13px" v-if="selectCountry != 'all'">
+                <img src="assets/images/countries/world.png" title="world" alt="world" width="25px"
+                    style=" margin-left:13px;" v-if="selectCountry == 'all'">
+                <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="25px"
                     style="filter: blur(5px)" v-if="selectCountry != 'armenia'">
-                <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="30px"
+                <img src="assets/images/countries/armenia.png" title="armenia" alt="armenia" width="25px"
                     v-if="selectCountry == 'armenia'">
-                <img src="assets/images/countries/austria.png" title="austria" alt="austria" width="30px"
+                <img src="assets/images/countries/austria.png" title="austria" alt="austria" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'austria'">
-                <img src="assets/images/countries/austria.png" title="austria" alt="austria" width="30px"
+                <img src="assets/images/countries/austria.png" title="austria" alt="austria" width="25px"
                     v-if="selectCountry == 'austria'">
-                <img src="assets/images/countries/bosnia.png" title="bosnia" alt="bosnia" width="30px"
+                    <img src="assets/images/countries/belarus.png" title="belarus" alt="belarus" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'belarus'">
+                <img src="assets/images/countries/belarus.png" title="belarus" alt="belarus" width="25px"
+                    v-if="selectCountry == 'belarus'">
+                <img src="assets/images/countries/belgium.png" title="belgium" alt="belgium" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'belgium'">
+                <img src="assets/images/countries/belgium.png" title="belgium" alt="belgium" width="25px"
+                    v-if="selectCountry == 'belgium'">
+                <img src="assets/images/countries/bosnia.png" title="bosnia" alt="bosnia" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'bosnia'">
-                <img src="assets/images/countries/bosnia.png" title="bosnia" alt="bosnia" width="30px"
+                <img src="assets/images/countries/bosnia.png" title="bosnia" alt="bosnia" width="25px"
                     v-if="selectCountry == 'bosnia'">
-                <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="30px"
+                <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'brazil'">
-                <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="30px"
+                <img src="assets/images/countries/brazil.png" title="brazil" alt="brazil" width="25px"
                     v-if="selectCountry == 'brazil'">
-                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
+                <img src="assets/images/countries/bulgaria.png" title="bulgaria" alt="bulgaria" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'bulgaria'">
+                <img src="assets/images/countries/bulgaria.png" title="bulgaria" alt="bulgaria" width="25px"
+                    v-if="selectCountry == 'bulgaria'">
+                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'chile'">
-                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="30px"
+                <img src="assets/images/countries/chile.png" title="chile" alt="chile" width="25px"
                     v-if="selectCountry == 'chile'">
-                <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
+                    <img src="assets/images/countries/colombia.png" title="colombia" alt="colombia" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'colombia'">
+                <img src="assets/images/countries/colombia.png" title="colombia" alt="colombia" width="25px"
+                    v-if="selectCountry == 'colombia'">
+                <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'croatia'">
-                <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="30px"
+                <img src="assets/images/countries/croatia.png" title="croatia" alt="croatia" width="25px"
                     v-if="selectCountry == 'croatia'">
-                <img src="assets/images/countries/czech.png" title="czech" alt="czech" width="30px"
+                <img src="assets/images/countries/czech.png" title="czech" alt="czech" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'czech'">
-                <img src="assets/images/countries/czech.png" title="czech" alt="czech" width="30px"
+                <img src="assets/images/countries/czech.png" title="czech" alt="czech" width="25px"
                     v-if="selectCountry == 'czech'">
-                <img src="assets/images/countries/egypt.png" title="egypt" alt="egypt" width="30px"
+                <img src="assets/images/countries/denmark.png" title="denmark" alt="denmark" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'denmark'">
+                <img src="assets/images/countries/denmark.png" title="denmark" alt="denmark" width="25px"
+                    v-if="selectCountry == 'denmark'">
+                <img src="assets/images/countries/egypt.png" title="egypt" alt="egypt" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'egypt'">
-                <img src="assets/images/countries/egypt.png" title="egypt" alt="egypt" width="30px"
+                <img src="assets/images/countries/egypt.png" title="egypt" alt="egypt" width="25px"
                     v-if="selectCountry == 'egypt'">
-                <img src="assets/images/countries/england.png" title="england" alt="england" width="30px"
+                <img src="assets/images/countries/england.png" title="england" alt="england" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'england'">
-                <img src="assets/images/countries/england.png" title="england" alt="england" width="30px"
+                <img src="assets/images/countries/england.png" title="england" alt="england" width="25px"
                     v-if="selectCountry == 'england'">
-                <img src="assets/images/countries/estonia.png" title="estonia" alt="estonia" width="30px"
+                <img src="assets/images/countries/estonia.png" title="estonia" alt="estonia" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'estonia'">
-                <img src="assets/images/countries/estonia.png" title="estonia" alt="estonia" width="30px"
+                <img src="assets/images/countries/estonia.png" title="estonia" alt="estonia" width="25px"
                     v-if="selectCountry == 'estonia'">
-                <img src="assets/images/countries/finland.png" title="finland" alt="finland" width="30px"
+                    <img src="assets/images/countries/faroe.png" title="faroe" alt="faroe" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'faroe'">
+                <img src="assets/images/countries/faroe.png" title="faroe" alt="faroe" width="25px"
+                    v-if="selectCountry == 'faroe'">
+                <img src="assets/images/countries/finland.png" title="finland" alt="finland" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'finland'">
-                <img src="assets/images/countries/finland.png" title="finland" alt="finland" width="30px"
+                <img src="assets/images/countries/finland.png" title="finland" alt="finland" width="25px"
                     v-if="selectCountry == 'finland'">
-                <img src="assets/images/countries/iceland.png" title="iceland" alt="iceland" width="30px"
+                <img src="assets/images/countries/france.png" title="france" alt="france" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'france'">
+                <img src="assets/images/countries/france.png" title="france" alt="france" width="25px"
+                    v-if="selectCountry == 'france'">
+                <img src="assets/images/countries/germany.png" title="germany" alt="germany" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'germany'">
+                <img src="assets/images/countries/germany.png" title="germany" alt="germany" width="25px"
+                    v-if="selectCountry == 'germany'">
+                <img src="assets/images/countries/greece.png" title="greece" alt="greece" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'greece'">
+                <img src="assets/images/countries/greece.png" title="greece" alt="greece" width="25px"
+                    v-if="selectCountry == 'greece'">
+                <img src="assets/images/countries/hungary.png" title="hungary" alt="hungary" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'hungary'">
+                <img src="assets/images/countries/hungary.png" title="hungary" alt="hungary" width="25px"
+                    v-if="selectCountry == 'hungary'">
+                <img src="assets/images/countries/iceland.png" title="iceland" alt="iceland" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'iceland'">
-                <img src="assets/images/countries/iceland.png" title="iceland" alt="iceland" width="30px"
+                <img src="assets/images/countries/iceland.png" title="iceland" alt="iceland" width="25px"
                     v-if="selectCountry == 'iceland'">
-                <img src="assets/images/countries/iran.png" title="iran" alt="iran" width="30px"
+                <img src="assets/images/countries/iran.png" title="iran" alt="iran" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'iran'">
-                <img src="assets/images/countries/iran.png" title="iran" alt="iran" width="30px"
+                <img src="assets/images/countries/iran.png" title="iran" alt="iran" width="25px"
                     v-if="selectCountry == 'iran'">
-                <img src="assets/images/countries/israel.png" title="israel" alt="israel" width="30px"
+                <img src="assets/images/countries/israel.png" title="israel" alt="israel" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'israel'">
-                <img src="assets/images/countries/israel.png" title="israel" alt="israel" width="30px"
+                <img src="assets/images/countries/israel.png" title="israel" alt="israel" width="25px"
                     v-if="selectCountry == 'israel'">
-                <img src="assets/images/countries/jordan.png" title="jordan" alt="jordan" width="30px"
+                    <img src="assets/images/countries/italy.png" title="italy" alt="italy" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'italy'">
+                <img src="assets/images/countries/italy.png" title="italy" alt="italy" width="25px"
+                    v-if="selectCountry == 'italy'">
+                <img src="assets/images/countries/jordan.png" title="jordan" alt="jordan" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'jordan'">
-                <img src="assets/images/countries/jordan.png" title="jordan" alt="jordan" width="30px"
+                <img src="assets/images/countries/jordan.png" title="jordan" alt="jordan" width="25px"
                     v-if="selectCountry == 'jordan'">
-                <img src="assets/images/countries/mauritania.png" title="mauritania" alt="mauritania" width="30px"
+                    <img src="assets/images/countries/luxembourg.png" title="luxembourg" alt="luxembourg" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'luxembourg'">
+                <img src="assets/images/countries/luxembourg.png" title="luxembourg" alt="luxembourg" width="25px"
+                    v-if="selectCountry == 'luxembourg'">
+                <img src="assets/images/countries/mauritania.png" title="mauritania" alt="mauritania" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'mauritania'">
-                <img src="assets/images/countries/mauritania.png" title="mauritania" alt="mauritania" width="30px"
+                <img src="assets/images/countries/mauritania.png" title="mauritania" alt="mauritania" width="25px"
                     v-if="selectCountry == 'mauritania'">
-                <img src="assets/images/countries/mexico.png" title="mexico" alt="mexico" width="30px"
+                <img src="assets/images/countries/mexico.png" title="mexico" alt="mexico" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'mexico'">
-                <img src="assets/images/countries/mexico.png" title="mexico" alt="mexico" width="30px"
+                <img src="assets/images/countries/mexico.png" title="mexico" alt="mexico" width="25px"
                     v-if="selectCountry == 'mexico'">
-                <img src="assets/images/countries/moldova.png" title="moldova" alt="moldova" width="30px"
+                <img src="assets/images/countries/moldova.png" title="moldova" alt="moldova" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'moldova'">
-                <img src="assets/images/countries/moldova.png" title="moldova" alt="moldova" width="30px"
+                <img src="assets/images/countries/moldova.png" title="moldova" alt="moldova" width="25px"
                     v-if="selectCountry == 'moldova'">
-                <img src="assets/images/countries/morocco.png" title="morocco" alt="morocco" width="30px"
+                <img src="assets/images/countries/morocco.png" title="morocco" alt="morocco" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'morocco'">
-                <img src="assets/images/countries/morocco.png" title="morocco" alt="morocco" width="30px"
+                <img src="assets/images/countries/morocco.png" title="morocco" alt="morocco" width="25px"
                     v-if="selectCountry == 'morocco'">
-                <img src="assets/images/countries/netherlands.png" title="netherlands" alt="netherlands" width="30px"
+                <img src="assets/images/countries/netherlands.png" title="netherlands" alt="netherlands" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'netherlands'">
-                <img src="assets/images/countries/netherlands.png" title="netherlands" alt="netherlands" width="30px"
+                <img src="assets/images/countries/netherlands.png" title="netherlands" alt="netherlands" width="25px"
                     v-if="selectCountry == 'netherlands'">
-                <img src="assets/images/countries/peru.png" title="peru" alt="peru" width="30px"
+                <img src="assets/images/countries/peru.png" title="peru" alt="peru" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'peru'">
-                <img src="assets/images/countries/peru.png" title="peru" alt="peru" width="30px"
+                <img src="assets/images/countries/peru.png" title="peru" alt="peru" width="25px"
                     v-if="selectCountry == 'peru'">
-                <img src="assets/images/countries/poland.png" title="poland" alt="poland" width="30px"
+                <img src="assets/images/countries/poland.png" title="poland" alt="poland" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'poland'">
-                <img src="assets/images/countries/poland.png" title="poland" alt="poland" width="30px"
+                <img src="assets/images/countries/poland.png" title="poland" alt="poland" width="25px"
                     v-if="selectCountry == 'poland'">
-                <img src="assets/images/countries/portugal.png" title="portugal" alt="portugal" width="30px"
+                <img src="assets/images/countries/portugal.png" title="portugal" alt="portugal" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'portugal'">
-                <img src="assets/images/countries/portugal.png" title="portugal" alt="portugal" width="30px"
+                <img src="assets/images/countries/portugal.png" title="portugal" alt="portugal" width="25px"
                     v-if="selectCountry == 'portugal'">
-                <img src="assets/images/countries/romania.png" title="romania" alt="romania" width="30px"
+                <img src="assets/images/countries/romania.png" title="romania" alt="romania" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'romania'">
-                <img src="assets/images/countries/romania.png" title="romania" alt="romania" width="30px"
+                <img src="assets/images/countries/romania.png" title="romania" alt="romania" width="25px"
                     v-if="selectCountry == 'romania'">
-                <img src="assets/images/countries/slovakia.png" title="slovakia" alt="slovakia" width="30px"
+                <img src="assets/images/countries/russia.png" title="russia" alt="russia" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'russia'">
+                <img src="assets/images/countries/russia.png" title="russia" alt="russia" width="25px"
+                    v-if="selectCountry == 'russia'">
+                <img src="assets/images/countries/slovakia.png" title="slovakia" alt="slovakia" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'slovakia'">
-                <img src="assets/images/countries/slovakia.png" title="slovakia" alt="slovakia" width="30px"
+                <img src="assets/images/countries/slovakia.png" title="slovakia" alt="slovakia" width="25px"
                     v-if="selectCountry == 'slovakia'">
-                <img src="assets/images/countries/solomon.png" title="solomon" alt="solomon" width="30px"
+                <img src="assets/images/countries/solomon.png" title="solomon" alt="solomon" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'solomon'">
-                <img src="assets/images/countries/solomon.png" title="solomon" alt="solomon" width="30px"
+                <img src="assets/images/countries/solomon.png" title="solomon" alt="solomon" width="25px"
                     v-if="selectCountry == 'solomon'">
-                <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="30px"
+                <img src="assets/images/countries/sudan.png" title="sudan" alt="sudan" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'sudan'">
+                <img src="assets/images/countries/sudan.png" title="sudan" alt="sudan" width="25px"
+                    v-if="selectCountry == 'sudan'">
+                <img src="assets/images/countries/sweden.png" title="sweden" alt="sweden" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'sweden'">
+                <img src="assets/images/countries/sweden.png" title="sweden" alt="sweden" width="25px"
+                    v-if="selectCountry == 'sweden'">
+                <img src="assets/images/countries/turkey.png" title="turkey" alt="turkey" width="25px"
+                    style=" filter: blur(5px)" v-if="selectCountry != 'turkey'">
+                <img src="assets/images/countries/turkey.png" title="turkey" alt="turkey" width="25px"
+                    v-if="selectCountry == 'turkey'">
+                <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'uruguay'">
-                <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="30px"
+                <img src="assets/images/countries/uruguay.png" title="uruguay" alt="uruguay" width="25px"
                     v-if="selectCountry == 'uruguay'">
-                <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
+                <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="25px"
                     style=" filter: blur(5px)" v-if="selectCountry != 'uzbekistan'">
-                <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="30px"
+                <img src="assets/images/countries/uzbekistan.png" title="uzbekistan" alt="uzbekistan" width="25px"
                     v-if="selectCountry == 'uzbekistan'">
 
             </div>
@@ -237,17 +318,6 @@
                                     <strong>{{match.data}}</strong>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
-                                </div>
-                            </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
@@ -269,17 +339,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no)}}</span>
                                 </div>
                             </div>
                         </a>
                         <a href="" class="homepage-betline mx-4"
-                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            v-if="match.liga.substring(4, 0).toLowerCase() == selectCountry.substring(4, 0)">
                             <div class="flex justify-between items-center mx-0 mb-2">
                                 <div class="flex">
                                     <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
@@ -289,10 +368,9 @@
                                     <strong>{{match.data}}</strong>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center rounded-up lh-15" v-if="stake1">
                                 <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
+                                    Search odd: <span class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
                                     </span>
                                 </div>
                                 <div class="retornoTeam2 bg-orange rounded-up">
@@ -321,12 +399,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no)}}</span>
                                 </div>
                             </div>
                         </a>
@@ -349,17 +436,6 @@
                                     <strong>{{match.data}}</strong>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
-                                </div>
-                            </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
@@ -383,17 +459,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no)}}</span>
                                 </div>
                             </div>
                         </a>
                         <a href="" class="homepage-betline mx-4"
-                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            v-if="match.liga.substring(4, 0).toLowerCase() == selectCountry.substring(4, 0)">
                             <div class="flex justify-between items-center mx-0 mb-2">
                                 <div class="flex">
                                     <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
@@ -403,17 +488,6 @@
                                     <strong>{{match.data}}</strong>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
-                                </div>
-                            </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
@@ -437,12 +511,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no)}}</span>
                                 </div>
                             </div>
                         </a>
@@ -464,17 +547,6 @@
                                     <strong>{{match.data}}</strong>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
-                                </div>
-                            </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
@@ -498,17 +570,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <!-- <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes.value)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
                                 </div>
-                            </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no.value)}}</span>
+                                </div>
+                            </div> -->
                         </a>
                         <a href="" class="homepage-betline mx-4"
-                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            v-if="match.liga.substring(4, 0).toLowerCase() == selectCountry.substring(4, 0)">
                             <div class="flex justify-between items-center mx-0 mb-2">
                                 <div class="flex">
                                     <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
@@ -518,17 +599,6 @@
                                     <strong>{{match.data}}</strong>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
-                                </div>
-                            </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
                                 <div class="competitor-container competitor-one rounded">
                                     <div class="flex items-center">
@@ -552,12 +622,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes.value)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no.value)}}</span>
                                 </div>
                             </div>
                         </a>
@@ -577,17 +656,6 @@
                                 </div>
                                 <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
                                     <strong>{{match.data}}</strong>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
                                 </div>
                             </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
@@ -612,17 +680,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no)}}</span>
                                 </div>
                             </div>
                         </a>
                         <a href="" class="homepage-betline mx-4"
-                            v-if="match.liga.substring(3, 0).toLowerCase() == selectCountry.substring(3, 0)">
+                            v-if="match.liga.substring(4, 0).toLowerCase() == selectCountry.substring(4, 0)">
                             <div class="flex justify-between items-center mx-0 mb-2">
                                 <div class="flex">
                                     <img src="assets/images/soccer.png" alt="" width="15px" style="margin-right: 5px;">
@@ -630,17 +707,6 @@
                                 </div>
                                 <div class="text-orange uppercase" style="font-size:10px;letter-spacing:0.58px;">
                                     <strong>{{match.data}}</strong>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center rounded-up lh-20" v-if="stake1">
-                                <div class="retornoTeam1 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_1) }}
-                                    </span>
-                                </div>
-                                <div class="retornoTeam2 bg-orange rounded-up">
-                                    Search odd: <span
-                                        class="font-bold">{{ buscarOdd(stake1, match.odd_equipe_2) }}</span>
                                 </div>
                             </div>
                             <div class="flex justify-between items-center bg-white-transparent-4">
@@ -665,12 +731,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-between items-center bg-green rounded-down lh-20" v-if="stake1">
+                            <div class="flex justify-between items-center bg-white rounded-down bd-orange lh-15" v-if="stake1">
+                                <div class="retornoTeam1 bg-orange rounded-right">
+                                   Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_yes)}}</span>
+                                </div>
                                 <div class="retornoTeam1">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_1)}}</span>
+                                    Yes<br><span class="font-bold">{{match.bs_yes}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-white-transparent-4 lh-30">
+                                    <span class="font-bold">Ambos marcam?</span>
                                 </div>
                                 <div class="retornoTeam2">
-                                    Return: <span class="font-bold">{{retornoStake1(stake1, match.odd_equipe_2)}}</span>
+                                    No<br><span class="font-bold">{{match.bs_no}}</span>
+                                </div>
+                                <div class="retornoTeam2 bg-orange rounded-left">
+                                    Search odd:<br><span class="font-bold">{{buscarOdd(stake1, match.bs_no)}}</span>
                                 </div>
                             </div>
                         </a>
